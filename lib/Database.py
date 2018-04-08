@@ -11,13 +11,14 @@ class Database:
 		insert = """INSERT INTO Test_Questions (Question, Answer, Keyword) VALUES (%s, %s, %s)"""
 		
 		try:
-			self.cur.execute(insert, (question, answer, keyword))
+			if (question != "" and answer != "" and question != "..." and answer != "..."):
+				self.cur.execute(insert, (question, answer, keyword))
 		except:
 			print("cannot insert")
 		self.conn.commit()
 		
 	def selectQuestions(self, keyword):
-		select = """SELECT Question, Answer FROM Test_Questions WHERE Keyword=%s ORDER BY RAND() LIMIT 10;"""
+		select = """SELECT Question, Answer FROM Test_Questions WHERE Keyword=%s ORDER BY RAND() LIMIT 20;"""
 		
 		try:
 			self.cur.execute(select, (keyword))

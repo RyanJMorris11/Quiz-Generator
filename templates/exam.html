@@ -1,22 +1,53 @@
 <html>
 <head>
+	{% if questions %}
+	{% else %}
+	 <meta http-equiv="refresh" content="8" />
+	 {% endif %}
+	 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 	
 <body style="background-color: #333333; color: white;">
 	
-
 	
-	<div class="container">
-		<h1>{{keyword}} Practice Exam</h1>
+	<div class="text-center" style="background-color: white; padding: 10px;">
+		<h1 style="color: #333333">{{keyword}} Practice Exam</h1>
+	</div>
+
+	<div class="container" style="padding-top: 30px">
+		
+
+		
+	{% if questions %}	
 	{% for q in questions%}
-		<strong>Question</strong>	{{q[0]}} <br>
-		<strong>Answer</strong> {{q[1]}} <br><br>
+		<strong>Question:  </strong>	{{q[0]}} <br>
+		<div  class="ans" style="display: none;"><strong style="color: #6a77fe;">Answer:  </strong> {{q[1]}} </div>
+		<br><br>
 	{% endfor %}
+	<button onclick="showAns()">Show Answers</button>
+	<script>
+	function showAns() {
+
+		$(".ans").show()
+
+	}
+	</script>
+	{% else %}
+	<div class="text-center">
+				<i class="fa fa-circle-o-notch fa-spin" style="font-size:100px"></i><br><br><br>
+		<h2>Generating Exam </h2> <br>
+		the page will refresh when it is ready <br>
+
+	</div>
+	{% endif %}
 	</div>
 
     
- 
+ <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>   
 </body>
 </html>
