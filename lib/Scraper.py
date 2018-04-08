@@ -16,7 +16,7 @@ class Scraper:
 			souce = urllib.request.urlopen(div.a.get('href')).read()
 			stone_soup = bs.BeautifulSoup(souce, 'lxml')
 
-			for span in stone_soup.find_all("span", {"class": "TermText notranslate lang-en"}):
+			for span in stone_soup.find_all("span", {"class": "TermText"}):
 				data[count] = span.text
 				if (count % 2 == 0):
 					db.insertQuestion(data[count - 1], data[count], kw)

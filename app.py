@@ -4,6 +4,8 @@ from lib.Database import Database
 import tensorflow as tf
 import requests
 import pymysql
+import _thread
+import time
 
 app = Flask(__name__)
 
@@ -17,12 +19,18 @@ def index():
 def quizlet_search():
 	if request.method == 'POST': 
 		search = request.form.get('search')
-		sc = Scraper()
-		data = sc.scan_and_scrape(search)
-		#return redirect(url_for('index'))
+		try:
+			_thread.start_new_thread( scrape_quizlet, (search,) )
+		except:
+			print( "cannot create a new thread")
+		return redirect(url_for('index'))
 		
 	
 	return "you were searching"
+	
+def scrape_quizlet(search):
+	sc = Scraper()
+	data = sc.scan_and_scrape(search)
 	
     
 	
