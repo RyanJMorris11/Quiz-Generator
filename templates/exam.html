@@ -21,11 +21,11 @@
 		
 	{% if questions %}	
 	{% for q in questions%}
-		<strong>Question:  </strong>	{{q[0]}} <br>
-		<div  class="ans" style="display: none;"><strong style="color: #6a77fe;">Answer:  </strong> {{q[1]}} </div>
+		<strong style="color: #6a77fe;">Question:  </strong>	{{q[0]}} <br>
+		<div  class="ans" style="display: none;"><strong style="color: #fe9690;">Answer:  </strong> {{q[1]}} </div>
 		<br><br>
 	{% endfor %}
-	<button onclick="showAns()">Show Answers</button>
+	<button class="btn" onclick="showAns()" style="margin-bottom: 100px;">Show Answers</button>
 	<script>
 	function showAns() {
 
