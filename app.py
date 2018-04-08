@@ -11,8 +11,15 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-
+	
 	return render_template("index.html")
+	
+@app.route("/exam")
+def exam():
+	keyword = request.args.get('keyword')
+	db = Database()
+	questions = db.selectQuestions(keyword)
+	return render_template("exam.html", questions=questions, keyword=keyword)
 	
 	
 @app.route("/quizlet", methods=['GET', 'POST'])
@@ -23,7 +30,9 @@ def quizlet_search():
 			_thread.start_new_thread( scrape_quizlet, (search,) )
 		except:
 			print( "cannot create a new thread")
-		return redirect(url_for('index'))
+			
+
+		return redirect(url_for('exam', keyword=search))
 		
 	
 	return "you were searching"

@@ -16,6 +16,20 @@ class Database:
 			print("cannot insert")
 		self.conn.commit()
 		
+	def selectQuestions(self, keyword):
+		select = """SELECT Question, Answer FROM Test_Questions WHERE Keyword=%s ORDER BY RAND() LIMIT 10;"""
+		
+		try:
+			self.cur.execute(select, (keyword))
+			result = self.cur.fetchall()
+		except:
+			print("cannot select")
+			
+		return result
+		self.conn.commit()
+		
 	def closeConnection(self):
 		self.conn.close()
+		
+	
 		

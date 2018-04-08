@@ -5,17 +5,17 @@
 	
 <body style="background-color: #333333; color: white;">
 	
-	
-	<div class="container text-center" style="padding-top: 3rem;">
-	<h1>Enter Keywords</h1>
-		<form action="/quizlet" id="test" method="post">
-			<label for="search">Build Exam</label>
-			<input name="search" type="text">
-			<input type="submit">
-		</form>		
-    </div>
-    
 
+	
+	<div class="container">
+		<h1>{{keyword}} Practice Exam</h1>
+	{% for q in questions%}
+		<strong>Question</strong>	{{q[0]}} <br>
+		<strong>Answer</strong> {{q[1]}} <br><br>
+	{% endfor %}
+	</div>
+
+    
  
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>   
 </body>
