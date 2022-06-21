@@ -16,7 +16,7 @@ Jinja2==2.10
 lxml==4.2.1
 Markdown==2.6.11
 MarkupSafe==1.0
-numpy==1.14.2
+numpy==1.22.0
 pandas==0.22.0
 protobuf==3.5.2.post1
 PyMySQL==0.8.0
