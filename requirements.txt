@@ -18,7 +18,7 @@ Markdown==2.6.11
 MarkupSafe==1.0
 numpy==1.14.2
 pandas==0.22.0
-protobuf==3.5.2.post1
+protobuf==3.18.3
 PyMySQL==0.8.0
 python-dateutil==2.7.2
 pytz==2018.3
